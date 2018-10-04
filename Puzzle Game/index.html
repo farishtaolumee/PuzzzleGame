@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Puzzle Game</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="shortcut icon 16X16" type="text/css" href="img/aslo.png">
+	  <meta name="veiwport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div class="all">
+	<div id="parent">
+		<div class="gif">
+			<img src="img/P.gif" class="puzzleGif0">
+    		<img src="img/U.gif" class="puzzleGif0">
+    		<img src="img/Z.gif" class="puzzleGif0">
+    		<img src="img/Z.gif" class="puzzleGif0">
+    		<img src="img/L.gif" class="puzzleGif0">
+    		<img src="img/E.gif" class="puzzleGif0"><br>
+    		<img src="img/G.gif" class="puzzleGif0">
+    		<img src="img/A.gif" class="puzzleGif0">
+    		<img src="img/M.gif" class="puzzleGif0">
+    		<img src="img/E.gif" class="puzzleGif0">
+	</div>
+			<div><a class="person" id="" href="firstlevel.html">play</a></div>
+			<div class="person" id="info">Info</div>
+				<div id="modalInfo">
+					<div id="contentInfo"><span id="exit1" class="exit2">&times;</span> 
+						<span><h4>Puzzle game</h4></span>
+						
+						<p id="para">A puzzle is a game, problem, or toy that tests a person's ingenuity or knowledge. In a puzzle, the solver is expected to put pieces together in a logical way, in order to arrive at the correct solution of the puzzle. 
+						Puzzles are often created to be a form of entertainment but they can also arise from serious mathematical or logistical problems. In such cases, their solution may be a significant contribution to mathematical research. we can use javascript and html and css and make this game  . this game created  from Drag Event and some metodes like last index of sclice and etc . this game is approxmately we can say a dynamic game or dunamic program that we created it . this game showing which How much is your level of intelligence? and you can understand it  	 </p>
+					</div>
+			</div>
+			
+			<div class="person" id="about">About</div>
+				<div id="modalAbout">
+					<div id="contentAbout"><span id="exit2" class="exit2">&times;</span><h3>Farishta Olumee</h3>
+						
+						<p id="para"> My name is farishta, my father's name abdulaziz .my last name is olumee
+	.and I am 17 years old ,I graduated from hewad high school on 1395~~2016, 
+	and I succed in herat university in public admistration faculty ,it was good
+	oppurtunity which i found in CTI (Code to inspire) also, i like it and and i
+	am student at full stack webdevelopment.at the end i really like webdesign and my teacher.and i could make a game by HTML /CSS/ JAVASCRIPT .i could make this game with javascript . "I am so happy that aprroximately learnd javascript which we can make any thing that creat in our brain we can do it and we can creat it. if you want to make something,you  can do it ,only enough that you learn it " . good luck<br>
+	 <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="https://twitter.com/farishtaolumee" style="color:#e4e1e1bf; "><span>"Farishta Olumee"</span></a>
+
+</p>
+
+					</div>
+				</div>
+			
+			<div class="person" id="Exitwindow">Exit</div>
+	</div>
+</div>
+<script type="text/javascript">
+//start  part of modal info
+	   var  modalInfo = document.getElementById('modalInfo');
+    var  contentInfo = document.getElementById('contentInfo');
+    var info = document.getElementById('info');
+    info.addEventListener('click',function(){
+        modalInfo.style.display = "block";
+    });
+
+   var exit1=document.getElementById('exit1');
+ 		exit1.addEventListener('click',function(){
+        modalInfo.style.display="none";
+
+ });  
+// end part of info
+// start modal About 
+  var  modalAbout = document.getElementById('modalAbout');
+    var  contentAbout = document.getElementById('contentAbout');
+    var about = document.getElementById('about');
+    about.addEventListener('click',function(){
+        modalAbout.style.display = "block";
+    });
+
+   var exit2=document.getElementById('exit2');
+ 		exit2.addEventListener('click',function(){
+        modalAbout.style.display="none";});
+
+    var Exitwindow = document.getElementById("Exitwindow");
+    Exitwindow.addEventListener("click", function(){
+    	window.close();
+    }) ;
+
+</script>
+</body>
+</html>

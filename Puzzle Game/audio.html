@@ -1,0 +1,30 @@
+<html>
+	<head></head>
+	<body>
+ <!-- <audio   id="audio" src="audio/Maid with the Flaxen Hair.mp3" playsinline autoplay  loop> </audio> -->
+ <video width="320" height="240" controls autoplay muted id="videoId">
+  <source src="audio/Maid with the Flaxen Hair.mp3" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+<script type="text/javascript">
+function toggleMute() {
+
+  var video=document.getElementById("videoId");
+
+  if(video.muted){
+    video.muted = false;
+     video.play()
+  } else {
+    debugger;
+    video.muted = true;
+    video.play()
+  }
+
+}
+
+  setTimeout(toggleMute,1000);
+</script>
+	</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Puzzle Game || First Level</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon 16X16" type="text/css" href="img/aslo.png">
+</head>
+<body>
+<div class="all">
+    <header>
+    	<div class="gif">
+    		<img src="img/P.gif" class="puzzleGif1">
+    		<img src="img/U.gif" class="puzzleGif1">
+    		<img src="img/Z.gif" class="puzzleGif1">
+    		<img src="img/Z.gif" class="puzzleGif1">
+    		<img src="img/L.gif" class="puzzleGif1">
+    		<img src="img/E.gif" class="puzzleGif1">
+    		<img src="img/G.gif" class="puzzleGif1">
+    		<img src="img/A.gif" class="puzzleGif1">
+    		<img src="img/M.gif" class="puzzleGif1">
+    		<img src="img/E.gif" class="puzzleGif1">
+    	</div>
+    </header>
+    <div id="container">
+    	<div class="row">
+           
+    		<div id="hint">
+             <!--     <button><a href="index.html">home</a></button>
+            <button id="exit">exit</button> -->
+    			<img src="" id="bob" width="100%">
+
+    		</div>
+    		<div id="countdown" style="">
+    			<div id="timer">00</div>
+    			<div class="icon"></div>
+    			<div class="opac"></div>
+    		</div>
+    	</div>
+        <div id="panel0">
+        <div id="panel1">
+        	<div class="row">
+        		<div class="square" id="1"></div>
+        		<div class="square" id="2"></div>
+        	</div>
+        	<div class="row">
+        		<div class="square" id="3" ></div>
+        		<div class="square" id="4" ></div>
+        	</div>
+        </div>
+        <div id="panel2">
+        	<div class="row">
+        		<div class="square1"><img draggable="true" id="secondPO" class="imgPuzzle"  src=""></div>
+        		<div class="square1"><img draggable="true" id="firstPO" class="imgPuzzle" src=""></div>
+        	</div>
+        	<div class="row">
+        		<div class="square1"><img draggable="true" id="fourthPo" class="imgPuzzle" src=""></div>
+        		<div class="square1"><img draggable="true" id="thirdPO" class="imgPuzzle" src=""></div>
+        	</div>
+        </div>
+    </div>
+    </div>
+</div>
+<div id="mymodal">
+        <div id="content">
+			<div id="body"><h1 id="message"></h1><div id="footer">
+                <button id="next"><a href="secondLevel.html">Next Level</a></button>
+                <button id="try"><a href="firstlevel.html">Try Again</a></button>
+                <button id="finishTime">00</button>
+                <button id="exit">Exit</button>
+            </div></div>
+            
+            
+        </div>
+
+</div>
+
+<script>
+
+//load img
+
+var randomNum = Math.floor(Math.random()*2)+1;
+// alert(randomNum);
+function loadimg () {
+    document.getElementById("bob").src = "img/bob/easylevel"+randomNum+"/bob.jpg";
+    document.getElementById("secondPO").src = "img/bob/easylevel"+randomNum+"/2.jpg";
+    document.getElementById("firstPO").src = "img/bob/easylevel"+randomNum+"/1.jpg";
+    document.getElementById("fourthPo").src = "img/bob/easylevel"+randomNum+"/4.jpg";
+    document.getElementById("thirdPO").src = "img/bob/easylevel"+randomNum+"/3.jpg";
+}
+window.onload=loadimg();
+
+
+
+exit.addEventListener("click", function(){
+
+       window.close();
+    
+    });
+//start timer
+var timer= document.getElementById("timer");
+var num = 0;
+    var interval = setInterval( intervalTimer,2000);
+    function intervalTimer(){
+        num++;
+        timer.innerHTML= num;
+if(num>59){
+        clearInterval(interval);
+        body.innerHTML="<p>your time is over</p>";
+         // mymodal.style.display = "block";
+        }
+
+    }
+//end timer
+
+/*Start rotate*/
+document.addEventListener("click", function(event) {
+    
+    if ( event.target.className == "imgPuzzle" ) {
+         event.target.style.transform="rotate(0deg)";
+    }
+});
+
+/*End rotate*/
+
+
+/*Start drags*/
+/* Events fired on the drag target */
+
+document.addEventListener("dragstart", function(event) {
+    // The dataTransfer.setData() method sets the data type and the value of the dragged data
+    event.dataTransfer.setData("images", event.target.id);
+    // document.querySelector(".imgPuzzle").style.transform="rotate(0deg)";
+    document.getElementById("secondPO").style.transform="rotate(0deg)";
+    document.getElementById("thirdPO").style.transform="rotate(0deg)";
+    // document.getElementById("fourthPO").style.transform="rotate(0deg)";
+    document.getElementById("firstPO").style.transform="rotate(0deg)";
+});
+
+/* Events fired on the drop target */
+
+
+// By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+
+document.addEventListener("dragover", function(event) {
+    event.preventDefault();
+});
+/* On drop - Prevent the browser default handling of the data (default is open as link on drop)
+   Reset the color of the output text and DIV's border color
+   Get the dragged data with the dataTransfer.getData() method
+   The dragged data is the id of the dragged element ("drag1")
+   Append the dragged element into the drop element
+*/
+document.addEventListener("drop", function(event) {
+    event.preventDefault();
+    if ( event.target.className == "square" || event.target.className == "square1" ) {
+        
+        var data = event.dataTransfer.getData("images");
+        event.target.appendChild(document.getElementById(data));
+    }
+        
+    if(
+        (document.getElementsByClassName("square")[0].hasChildNodes()) &&
+        (document.getElementsByClassName("square")[1].hasChildNodes()) &&
+        (document.getElementsByClassName("square")[2].hasChildNodes()) &&
+        (document.getElementsByClassName("square")[3].hasChildNodes()) 
+
+    )
+    {
+        var src0 = document.getElementsByClassName("square")[0].children[0].src;
+        var src1 = document.getElementsByClassName("square")[1].children[0].src;
+        var src2 = document.getElementsByClassName("square")[2].children[0].src;
+        var src3 = document.getElementsByClassName("square")[3].children[0].src;
+            // part of modal 
+        var mymodal = document.getElementById("mymodal");
+        var body= document.getElementById("body");
+        var exit = document.getElementById("exit");
+        var finishTime = document.getElementById("finishTime");
+        var message = document.getElementById("message");
+        if(
+            
+            ((document.getElementsByClassName("square")[0].id) == src0.slice(src0.lastIndexOf("jpg")-2,src0.lastIndexOf("jpg")-1))
+            &&
+            ((document.getElementsByClassName("square")[1].id) == src1.slice(src1.lastIndexOf("jpg")-2,src1.lastIndexOf("jpg")-1))
+            &&
+            ((document.getElementsByClassName("square")[2].id) == src2.slice(src2.lastIndexOf("jpg")-2,src2.lastIndexOf("jpg")-1))
+            &&
+            ((document.getElementsByClassName("square")[3].id) == src3.slice(src3.lastIndexOf("jpg")-2,src3.lastIndexOf("jpg")-1))
+        )
+        {
+            var timer= document.getElementById("timer");
+
+            clearInterval(interval);
+
+            var audio = new Audio('audio/clapa.mp3');
+            audio.play();
+
+            setTimeout(function(){mymodal.style.display = "block";}, 2000);
+            document.getElementById('try').style.display="none";
+            if(num<20){
+                message.innerHTML = "Awesome";
+                
+               }else if(num<40)
+               {
+                    message.innerHTML = "Great";
+                    
+               }else
+               {
+                   message.innerHTML = "Welldone";
+                
+               }
+                    finishTime.innerHTML = "Finish Time" + " : " + num + "s" ;
+        }
+        else
+        {
+             var timer= document.getElementById("timer");
+
+             clearInterval(interval);
+
+              var audio = new Audio('audio/Sleep Away.mp3');
+                audio.play();
+            
+            setTimeout(function(){
+                mymodal.style.display = "block";
+                message.innerHTML = "Try Again";
+                document.getElementById('try').style.display="block";
+                document.getElementById('next').style.display="none";
+                body.style.color = "white";
+                body.style.textAlign="center";
+                body.style.fontSize="25px";
+                body.style.backgroundImage="url('img/giphy.gif')";
+                body.style.backgroundSize="100% 100%";
+                body.style.backgroundRepeat="no-repeat";
+                exit.style.backgroundColor="#33adff";
+                finishTime.innerHTML="Finish Time  : "   + num + "s";
+                finishTime.style.backgroundColor = "#33adff";
+            }, 2000);
+        }
+    
+    }
+});
+
+    
+//End drags document.getElementsByClassName("square")[3].id == document
+
+</script>
+
+</body>
+
+</html>

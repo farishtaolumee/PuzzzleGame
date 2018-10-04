@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Puzzle Game || third Level</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon 16X16" type="text/css" href="img/aslo.png">
+    <meta name="veiwport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="all">
+        	<header>
+        		<div class="gif">
+        		
+            <img src="img/P.gif" class="puzzleGif3">
+            <img src="img/U.gif" class="puzzleGif3">
+            <img src="img/Z.gif" class="puzzleGif3">
+            <img src="img/Z.gif" class="puzzleGif3">
+            <img src="img/L.gif" class="puzzleGif3">
+            <img src="img/E.gif" class="puzzleGif3">
+            <img src="img/G.gif" class="puzzleGif3">
+            <img src="img/A.gif" class="puzzleGif3">
+            <img src="img/M.gif" class="puzzleGif3">
+
+        		</div>
+        	</header>
+
+    <div id="container">
+    	<div class="row">
+    		<div id="hint">
+    				<img id="keyImg" src="" width="100%">
+
+    		</div>
+    		<div id="countdown">
+    			<div id="timer">0</div>
+    			<div class="icon"></div>
+    			<div class="opac"></div>
+    		</div>
+    	</div>
+        <div id="panel0">
+            <div id="panel1">
+            	<div class="row">
+            		<div class="squareHard" id="1"></div>
+                    <div class="squareHard" id="2"></div>
+                    <div class="squareHard" id="3"></div>
+            		<div class="squareHard" id="4"></div>
+            	</div>
+            	<div class="row">
+            		<div class="squareHard" id="5" ></div>
+                    <div class="squareHard" id="6" ></div>
+                    <div class="squareHard" id="7" ></div>
+            		<div class="squareHard" id="8" ></div>
+            	</div>
+             </div>
+        <div id="panel2">
+        	<div class="row">
+        		<div class="square3"><img draggable="true" id="secondPO" class="imgPuzzle"  src=""></div>
+                <div class="square3"><img draggable="true" id="firstPO" class="imgPuzzle" src=""></div>
+                <div class="square3"><img draggable="true" id="fifthPO" class="imgPuzzle" src=""></div>
+        		<div class="square3"><img draggable="true" id="seventhPO" class="imgPuzzle" src=""></div>
+        	</div>
+        	<div class="row">
+        		  <div class="square3"><img draggable="true" id="fourthPo" class="imgPuzzle" src="">   </div>
+                    <div class="square3"><img draggable="true" id="thirdPO" class="imgPuzzle" src=""></div>
+                    <div class="square3"><img draggable="true" id="sexthPO" class="imgPuzzle" src=""></div>
+            		<div class="square3"><img draggable="true" id="eighthPO" class="imgPuzzle" src=""></div>
+        	   </div>
+         </div>
+      </div>
+     </div>
+ </div>
+<div id="mymodal">
+        <div id="content">
+			<div id="body">
+             <h1 id="message"></h1><div id="footer">
+				<button id="next"><a href="#">Next Level</a></button>
+                <button id="try"><a href="thirdlevel.html">Try Again</a></button>
+                <button id="finishTime">00</button>
+				<button id="exit"><a href="#">Exit</a></button>
+	        </div></div>
+            
+        </div>
+
+</div>
+<script>
+
+// load images
+var randomNum = Math.floor(Math.random()*2)+1;
+// alert(randomNum);
+function loadimg () {
+    document.getElementById("keyImg").src = "img/random/hardlevel"+randomNum+"/keyimg.jpg";
+
+    document.getElementById("secondPO").src = "img/random/hardlevel"+randomNum+"/2.jpg";
+    document.getElementById("firstPO").src = "img/random/hardlevel"+randomNum+"/1.jpg";
+    document.getElementById("fifthPO").src = "img/random/hardlevel"+randomNum+"/5.jpg";
+    document.getElementById("seventhPO").src = "img/random/hardlevel"+randomNum+"/7.jpg";
+    document.getElementById("fourthPo").src = "img/random/hardlevel"+randomNum+"/4.jpg";
+    document.getElementById("thirdPO").src = "img/random/hardlevel"+randomNum+"/3.jpg";
+    document.getElementById("sexthPO").src = "img/random/hardlevel"+randomNum+"/6.jpg";
+    document.getElementById("eighthPO").src = "img/random/hardlevel"+randomNum+"/8.jpg";
+}
+window.onload=loadimg();
+
+/*start timer*/
+var timer= document.getElementById("timer");
+var num = 0;
+    var interval = setInterval( intervalTimer,2000);
+    function intervalTimer(){
+        num++;
+        timer.innerHTML=num;
+if(num>59){
+        clearInterval(interval);
+        body.innerHTML="<p>your time is over</p>";
+        // mymodal.style.display = "block";
+        }
+
+    }
+ /*end timer*/
+
+/*Start rotate*/
+document.addEventListener("click", function(event) {
+    
+    if ( event.target.className == "imgPuzzle" ) {
+        
+        
+        event.target.style.transform="rotate(0deg)";
+    }
+});
+/*End rotate*/
+
+
+/*Start drags*/
+/* Events fired on the drag target */
+
+document.addEventListener("dragstart", function(event) {
+    // The dataTransfer.setData() method sets the data type and the value of the dragged data
+    event.dataTransfer.setData("images", event.target.id);
+    // document.querySelector(".imgPuzzle").style.transform="rotate(0deg)";
+    document.getElementById("secondPO").style.transform="rotate(0deg)";
+    document.getElementById("firstPO").style.transform="rotate(0deg)";
+    document.getElementById("fifthPO").style.transform="rotate(0deg)";
+    // document.getElementById("fourthPO").style.transform="rotate(0deg)";
+    document.getElementById("thirdPO").style.transform="rotate(0deg)";
+    document.getElementById("sexthPO").style.transform="rotate(0deg)";
+    document.getElementById("seventhPO").style.transform="rotate(0deg)";
+    document.getElementById("eightPO").style.transform="rotate(0deg)";
+});
+
+/* Events fired on the drop target */
+
+
+// By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+document.addEventListener("dragover", function(event) {
+    event.preventDefault();
+   
+});
+
+/* On drop - Prevent the browser default handling of the data (default is open as link on drop)
+   Reset the color of the output text and DIV's border color
+   Get the dragged data with the dataTransfer.getData() method
+   The dragged data is the id of the dragged element ("drag1")
+   Append the dragged element into the drop element
+*/
+document.addEventListener("drop", function(event) {
+
+	
+ 	
+ 	
+
+    event.preventDefault();
+    if ( event.target.className == "squareHard" || event.target.className == "square3" ) {
+        
+        var data = event.dataTransfer.getData("images");
+        event.target.appendChild(document.getElementById(data));
+    }
+        
+    if(
+    	(document.getElementsByClassName("squareHard")[0].hasChildNodes()) &&
+    	(document.getElementsByClassName("squareHard")[1].hasChildNodes()) &&
+    	(document.getElementsByClassName("squareHard")[2].hasChildNodes()) &&
+        (document.getElementsByClassName("squareHard")[3].hasChildNodes()) &&
+    	(document.getElementsByClassName("squareHard")[4].hasChildNodes()) &&
+        (document.getElementsByClassName("squareHard")[5].hasChildNodes()) && 
+        (document.getElementsByClassName("squareHard")[6].hasChildNodes()) &&
+        (document.getElementsByClassName("squareHard")[7].hasChildNodes()) 
+
+
+	)
+    {
+    	var src0 = document.getElementsByClassName("squareHard")[0].children[0].src;
+    	var src1 = document.getElementsByClassName("squareHard")[1].children[0].src;
+    	var src2 = document.getElementsByClassName("squareHard")[2].children[0].src;
+        var src3 = document.getElementsByClassName("squareHard")[3].children[0].src;
+        var src4 = document.getElementsByClassName("squareHard")[4].children[0].src;
+        var src5 = document.getElementsByClassName("squareHard")[5].children[0].src;
+        var src6 = document.getElementsByClassName("squareHard")[6].children[0].src;
+    	var src7 = document.getElementsByClassName("squareHard")[7].children[0].src;
+    		// part of modal 
+    	var mymodal = document.getElementById("mymodal");
+    	var body= document.getElementById("body");
+        var exit = document.getElementById("exit");
+        var finishTime = document.getElementById("finishTime");
+		var message = document.getElementById("message");
+    	if(
+    		
+    		((document.getElementsByClassName("squareHard")[0].id) == src0.slice(src0.lastIndexOf("jpg")-2,src0.lastIndexOf("jpg")-1))
+    		&&
+            ((document.getElementsByClassName("squareHard")[1].id) == src1.slice(src1.lastIndexOf("jpg")-2,src1.lastIndexOf("jpg")-1))
+            &&
+            ((document.getElementsByClassName("squareHard")[2].id) == src2.slice(src2.lastIndexOf("jpg")-2,src2.lastIndexOf("jpg")-1))
+            &&
+            ((document.getElementsByClassName("squareHard")[3].id) == src3.slice(src3.lastIndexOf("jpg")-2,src3.lastIndexOf("jpg")-1))
+            &&
+            ((document.getElementsByClassName("squareHard")[4].id) == src4.slice(src4.lastIndexOf("jpg")-2,src4.lastIndexOf("jpg")-1))
+             &&
+            ((document.getElementsByClassName("squareHard")[5].id) == src5.slice(src5.lastIndexOf("jpg")-2,src5.lastIndexOf("jpg")-1))
+               &&
+            ((document.getElementsByClassName("squareHard")[6].id) == src6.slice(src6.lastIndexOf("jpg")-2,src6.lastIndexOf("jpg")-1))
+               &&
+            ((document.getElementsByClassName("squareHard")[7].id) == src7.slice(src7.lastIndexOf("jpg")-2,src7.lastIndexOf("jpg")-1))
+    		
+    	
+		)
+    	{            
+            var timer= document.getElementById("timer");
+
+            clearInterval(interval);
+
+            var audio = new Audio('audio/clapa.mp3');     
+            audio.play();
+            
+    		setTimeout(function(){mymodal.style.display = "block";}, 2000);
+    		if(num<20){
+                    message.innerHTML = "Awesome";
+                
+               }else if(num<40)
+               {
+                   message.innerHTML = "Great";
+                    
+               }else
+               {
+                  message.innerHTML = "Welldone";
+                
+               }
+    		document.getElementById('try').style.display="none";
+             finishTime.innerHTML="Finish Time" + " : " + num + "s";
+    	}
+        else
+    	{
+            
+            // alert(document.getElementsByClassName("squareMedium")[5].id);//1
+            // alert(src5.slice(src5.lastIndexOf("png")-2,src5.lastIndexOf("png")-1));//1
+            var timer= document.getElementById("timer");
+
+            clearInterval(interval);
+
+              var audio = new Audio('audio/Sleep Away.mp3');
+            audio.play();
+            
+            
+    		setTimeout(function(){
+    			mymodal.style.display = "block";
+    	        message.innerHTML = "Try Again";
+    			document.getElementById('try').style.display="block";
+    			document.getElementById('next').style.display="none";
+    			body.style.color = "white";
+        		body.style.textAlign="center";
+        		body.style.fontSize="25px";
+        		body.style.backgroundImage="url('img/giphy.gif')";
+        		body.style.backgroundSize="100% 100%";
+        		body.style.backgroundRepeat="no-repeat";
+                exit.style.backgroundColor="#33adff";
+                 finishTime.innerHTML="Finish Time" + " : " + num + "s";
+                 finishTime.style.backgroundColor = "#33adff";
+
+  		
+		}, 2000);
+    	}
+    
+    }
+});
+
+    exit.addEventListener("click", function(){
+       window.close();
+    });
+//End drags document.getElementsByClassName("square")[3].id == document
+
+</script>
+</body>
+
+</html>
